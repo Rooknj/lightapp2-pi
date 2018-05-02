@@ -1,0 +1,25 @@
+# Update and upgrade
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
+# Install Mosquitto:
+sudo apt-get install -y mosquitto 
+
+# Install git
+sudo apt-get install git
+git clone https://github.com/Rooknj/lightapp2-pi.git
+git clone https://github.com/Rooknj/lightapp2-server.git
+git clone https://github.com/Rooknj/lightapp2-client.git
+
+# Install node.js
+// updates our Debian apt package repository to include the NodeSource packages.
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Install yarn
+curl -o- -L https://yarnpkg.com/install.sh | bash 
+// Need to reboot after
+
+# Install nginx
+sudo apt-get install -y nginx
+

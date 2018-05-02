@@ -1,0 +1,10 @@
+version: "3"
+services:
+  client:
+    image: rooknj/lightapp2:client-latest
+    ports:
+      - "80:80"
+  server:
+    image: rooknj/lightapp2:server-latest
+    ports:
+      - "4001:4001"
