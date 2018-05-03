@@ -6,8 +6,7 @@ services:
       - "80:80"
   server:
     image: rooknj/lightapp2:server-latest
-    ports:
-      - "4001:4001"
+    network_mode: "host"
   broker:
     image: rooknj/lightapp2:broker-latest
     ports:
