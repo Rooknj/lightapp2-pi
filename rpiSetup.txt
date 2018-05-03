@@ -23,3 +23,15 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 # Install nginx
 sudo apt-get install -y nginx
 
+# Add mDNS advertisement for MQTT server
+Create the file /etc/avahi/services/mqtt.service
+Paste this inside:
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+ <name replace-wildcards="yes">MQTT on %h</name>
+  <service>
+   <type>_mqtt._tcp</type>
+   <port>1883</port>
+  </service>
+</service-group>
