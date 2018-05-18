@@ -2,18 +2,31 @@ version: "3"
 services:
   client:
     image: rooknj/lightapp2:client-latest
+    restart: always
     ports:
       - "80:80"
   server:
-    image: rooknj/lightapp2:server-latest
+    image: rooknj/lightapp2:server-test
+    restart: always
     network_mode: "host"
   broker:
-    image: rooknj/lightapp2:broker-latest
+    image: rooknj/lightapp2:broker-test
+    restart: always
     ports:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - /mqtt/config
+      - ./mqtt/config:/mqtt/config
       - /mqtt/data
       - /mqtt/log
-    
+  homebridge:
+    image: oznu/homebridge:raspberry-pi
+    restart: always
+    network_mode: host
+    volumes:
+      - ./homekit/config:/homebridge
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
