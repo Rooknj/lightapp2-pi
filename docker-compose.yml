@@ -6,17 +6,17 @@ services:
     ports:
       - "80:80"
   server:
-    image: rooknj/lightapp2:server-latest
+    image: rooknj/lightapp2:server-test
     restart: always
     network_mode: "host"
   broker:
-    image: rooknj/lightapp2:broker-latest
+    image: rooknj/lightapp2:broker-test
     restart: always
     ports:
       - "1883:1883"
       - "9001:9001"
     volumes:
-      - /mqtt/config
+      - ./mqtt/config:/mqtt/config
       - /mqtt/data
       - /mqtt/log
     
