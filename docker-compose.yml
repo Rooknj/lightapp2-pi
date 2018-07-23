@@ -10,7 +10,7 @@ services:
     restart: always
     network_mode: "host"
     environment:
-      - IN_DOCKER_CONTAINER=true
+      - MQTT_HOST=localhost
   redis:
     image: arm32v7/redis:latest
     restart: always
