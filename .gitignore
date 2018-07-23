@@ -4,3 +4,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+/homekit
+!/homekit/config.json
+!/homekit/package.json
+!/homekit/package-lock.json
