@@ -4,6 +4,8 @@
 !/homekit/package.json
 !/homekit/package-lock.json
 
+/redisData
+
 # misc
 .DS_Store
 .env.local
