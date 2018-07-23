@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "homebridge-dummy": "^0.2.0",
+    "homebridge-mqtt": "^0.5.0"
+  }
+}
