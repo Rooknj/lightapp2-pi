@@ -1,11 +1,12 @@
+
+/homekit
+!/homekit/config.json
+!/homekit/package.json
+!/homekit/package-lock.json
+
 # misc
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
-/homekit
-!/homekit/config.json
-!/homekit/package.json
-!/homekit/package-lock.json
