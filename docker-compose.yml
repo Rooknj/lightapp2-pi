@@ -1,16 +1,25 @@
 version: "3"
 services:
   client:
-    image: rooknj/lightapp2:client-latest
+    image: rooknj/lightapp2:client-rpi-latest
     restart: always
     ports:
       - "80:80"
   server:
-    image: rooknj/lightapp2:server-latest
+    image: rooknj/lightapp2:server-rpi-latest
     restart: always
     network_mode: "host"
+    environment:
+      - IN_DOCKER_CONTAINER=true
+  redis:
+    image: arm32v7/redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redisData:/data
   broker:
-    image: rooknj/lightapp2:broker-latest
+    image: rooknj/lightapp2:broker-rpi-latest
     restart: always
     ports:
       - "1883:1883"
