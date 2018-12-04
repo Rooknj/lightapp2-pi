@@ -48,8 +48,30 @@ lightapp2-pi
 </service-group>
 ```
 # Working with homebridge
-## Use homebridge-mqtt to add/remove lights
+## We are using homebridge-mqtt to interface with homekit
 - Follow the API here: https://www.npmjs.com/package/homebridge-mqtt
+- Service and characteristic names defined here : https://github.com/KhaosT/HAP-NodeJS/blob/master/lib/gen/HomeKitTypes.js
+
+## Adding a light to homekit
+- Publish this to lightapp2/to/add
+```
+{
+  "name": "<Device ID>",
+  "service_name": "<Display Name>",
+  "service": "Lightbulb",
+  "Brightness": "default",
+  "Hue": "default",
+  "Saturation": "default"
+}
+```
+
+## Removing a light from homekit
+- Publish this to lightapp2/to/remove
+```
+{
+  "name": "<Device ID>"
+}
+```
 
 ## Add homebridge to homekit
 - SSH into your raspberry pi 3
