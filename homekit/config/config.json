@@ -1,9 +1,9 @@
 {
     "bridge": {
         "name": "Light App 2",
-        "username": "CC:22:3D:E3:CE:30",
+        "username": "CC:22:3D:E3:CE:31",
         "port": 51826,
-        "pin": "031-45-154"
+        "pin": "420-26-123"
     },
     "description": "This is an example configuration file. You can use this as a template for creating your own configuration file containing devices you actually own.",
     "accessories": [],

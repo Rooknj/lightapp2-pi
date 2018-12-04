@@ -48,5 +48,13 @@ lightapp2-pi
 </service-group>
 ```
 # Working with homebridge
-## We are using homebridge-mqtt
+## Use homebridge-mqtt to add/remove lights
 - Follow the API here: https://www.npmjs.com/package/homebridge-mqtt
+
+## Add homebridge to homekit
+- SSH into your raspberry pi 3
+- Navigate to the lightapp2-pi folder
+- Run ```docker ps```
+- Find the correct container id for the homekit container
+- Run ```docker logs <CONTAINER-ID>```
+- Find the homekit QR code and add it
