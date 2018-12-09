@@ -5,11 +5,24 @@ services:
     restart: always
     ports:
       - "80:80"
-  server:
-    image: rooknj/lightapp2:server-rpi-latest
+  rabbit:
+    image: arm32v7/rabbitmq:3
+    hostname: "myrabbit"
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+  api:
+    image: rooknj/lightapp2:api-gateway-rpi-latest
     restart: always
     network_mode: "host"
     environment:
+      - DEBUG="main,config,server,service"
+  controller:
+    image: rooknj/lightapp2:controller-microservice-rpi-latest
+    restart: always
+    network_mode: "host"
+    environment:
+      - DEBUG="main,config,service,db,pubsub,repo"
       - MQTT_HOST=localhost
   redis:
     image: arm32v7/redis:latest
