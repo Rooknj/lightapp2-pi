@@ -2,6 +2,7 @@ version: "3"
 services:
   client:
     image: rooknj/lightapp2:client-rpi-latest
+    container_name: client
     restart: always
     ports:
       - "80:80"
@@ -9,10 +10,12 @@ services:
     image: arm32v7/rabbitmq:3
     hostname: "myrabbit"
     container_name: rabbit
+    restart: always
     ports:
       - "5672:5672"
   api:
     image: rooknj/lightapp2:api-gateway-rpi-latest
+    container_name: api
     restart: always
     network_mode: "host"
     environment:
@@ -20,6 +23,7 @@ services:
       - RABBIT_HOST=localhost
   controller:
     image: rooknj/lightapp2:controller-microservice-rpi-latest
+    container_name: controller
     restart: always
     network_mode: "host"
     environment:
@@ -28,6 +32,7 @@ services:
       - RABBIT_HOST=localhost
   redis:
     image: arm32v7/redis:latest
+    container_name: redis
     restart: always
     ports:
       - "6379:6379"
@@ -35,6 +40,7 @@ services:
       - ./redisData:/data
   broker:
     image: rooknj/lightapp2:broker-rpi-latest
+    container_name: broker
     restart: always
     ports:
       - "1883:1883"
@@ -45,6 +51,7 @@ services:
       - /mqtt/log
   homebridge:
     image: oznu/homebridge:raspberry-pi
+    container_name: homebridge
     restart: always
     network_mode: host
     volumes:
