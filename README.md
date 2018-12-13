@@ -1,5 +1,13 @@
-lightapp2-pi
+Lightapp2-pi
 ===========================================
+
+<p align="center">
+  <img alt="Lightapp2-pi" src="./raspberry-pi-3.png" width="480">
+</p>
+
+<p align="center">
+  The Docker-compose file to run lightapp2 on your rpi3
+</p>
 
 # How to run
 - Make sure the Raspberry pi 3 is set up correctly (Section below)
