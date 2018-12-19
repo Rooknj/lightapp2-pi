@@ -1,7 +1,7 @@
 version: "3"
 services:
   client:
-    image: rooknj/lightapp2:client-rpi-latest
+    image: rooknj/lightapp2-client:latest-rpi
     container_name: client
     restart: always
     ports:
@@ -14,7 +14,7 @@ services:
     ports:
       - "5672:5672"
   api:
-    image: rooknj/lightapp2:api-gateway-rpi-latest
+    image: rooknj/lightapp2-api:latest-rpi
     container_name: api
     restart: always
     network_mode: "host"
@@ -22,7 +22,7 @@ services:
       - DEBUG="main,config,server,service"
       - RABBIT_HOST=localhost
   controller:
-    image: rooknj/lightapp2:controller-microservice-rpi-latest
+    image: rooknj/lightapp2-controller:latest-rpi
     container_name: controller
     restart: always
     network_mode: "host"
