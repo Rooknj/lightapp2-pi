@@ -6,6 +6,12 @@ services:
     restart: always
     ports:
       - "80:80"
+  testclient:
+    image: rooknj/lightapp2-client:test-rpi
+    container_name: testclient
+    restart: always
+    ports:
+      - "8080:80"
   rabbit:
     image: arm32v7/rabbitmq:3
     hostname: "myrabbit"
