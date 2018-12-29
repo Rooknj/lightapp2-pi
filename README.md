@@ -23,6 +23,9 @@ Lightapp2-pi
   - Note: This may take a while as it needs to pull the images from docker cloud
 # How to setup the Raspberry Pi 3
 ## Clone the git repo or just download the file
+- Update the RPI
+  - ```sudo apt-get update```
+  - ```sudo apt-get upgrade```
 - Install git if you havent already
   - ```sudo apt-get install git```
 - Clone the repo
@@ -38,8 +41,8 @@ Lightapp2-pi
 - Test this is working correctly
   - ```docker run hello-world```
 - Install docker-compose using pip
-  - ```apt install -y python python-pip``` (if pip and python are not installed)
-  - ```pip install -U docker-compose```
+  - ```sudo apt install -y python python-pip``` (if pip and python are not installed)
+  - ```sudo pip install -U docker-compose```
 
 ## Add mDNS advertisement for MQTT server
 - Create the file /etc/avahi/services/mqtt.service
@@ -55,6 +58,7 @@ Lightapp2-pi
   </service>
 </service-group>
 ```
+- Reboot to take effect
 # Working with homebridge
 ## We are using homebridge-mqtt to interface with homekit
 - Follow the API here: https://www.npmjs.com/package/homebridge-mqtt
