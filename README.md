@@ -22,6 +22,13 @@ Prysmalight-pi
 - Run ```docker-compose pull```
   - Note: This may take a while as it needs to pull the images from docker cloud
 # How to setup the Raspberry Pi 3
+## Change Hostname
+- Open Hosts File
+  - ```sudo nano /etc/hosts
+  - Change raspberrypi to prysmalight
+- Open Hostname File
+  - ```sudo nano /etc/hostname```
+  - Change raspberrypi to prysmalight
 ## Clone the git repo or just download the file
 - Update the RPI
   - ```sudo apt-get update```
