@@ -23,19 +23,17 @@ services:
     image: rooknj/lightapp2-api:latest-rpi
     container_name: api
     restart: always
-    network_mode: "host"
     environment:
       - DEBUG="main,config,server,service"
-      - RABBIT_HOST=localhost
+      - RABBIT_HOST=rabbit
   controller:
     image: rooknj/lightapp2-controller:latest-rpi
     container_name: controller
     restart: always
-    network_mode: "host"
     environment:
       - DEBUG="main,config,service,db,pubsub,repo"
-      - MQTT_HOST=localhost
-      - RABBIT_HOST=localhost
+      - MQTT_HOST=broker
+      - RABBIT_HOST=rabbit
   redis:
     image: arm32v7/redis:latest
     container_name: redis
