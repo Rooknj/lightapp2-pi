@@ -17,16 +17,22 @@ services:
     hostname: "myrabbit"
     container_name: rabbit
     restart: always
-    ports:
-      - "5672:5672"
   api:
+    depends_on:
+      - rabbit
     image: rooknj/lightapp2-api:latest-rpi
     container_name: api
     restart: always
+    ports:
+      - "4001:4001"
     environment:
       - DEBUG="main,config,server,service"
       - RABBIT_HOST=rabbit
   controller:
+    depends_on:
+      - rabbit
+      - redis
+      - broker
     image: rooknj/lightapp2-controller:latest-rpi
     container_name: controller
     restart: always
@@ -34,12 +40,11 @@ services:
       - DEBUG="main,config,service,db,pubsub,repo"
       - MQTT_HOST=broker
       - RABBIT_HOST=rabbit
+      - REDIS_HOST=redis
   redis:
     image: arm32v7/redis:latest
     container_name: redis
     restart: always
-    ports:
-      - "6379:6379"
     volumes:
       - ./redisData:/data
   broker:
@@ -48,7 +53,6 @@ services:
     restart: always
     ports:
       - "1883:1883"
-      - "9001:9001"
     volumes:
       - ./mqtt/config:/mqtt/config
       - /mqtt/data
