@@ -1,4 +1,4 @@
-Lightapp2-pi
+Prysmalight-pi
 ===========================================
 
 <p align="center">
