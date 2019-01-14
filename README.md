@@ -24,7 +24,7 @@ Prysmalight-pi
 # How to setup the Raspberry Pi 3
 ## Change Hostname
 - Open Hosts File
-  - ```sudo nano /etc/hosts
+  - ```sudo nano /etc/hosts```
   - Change raspberrypi to prysma
 - Open Hostname File
   - ```sudo nano /etc/hostname```
