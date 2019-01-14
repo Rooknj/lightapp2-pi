@@ -72,7 +72,7 @@ Prysmalight-pi
 - Service and characteristic names defined here : https://github.com/KhaosT/HAP-NodeJS/blob/master/lib/gen/HomeKitTypes.js
 
 ## Adding a light to homekit
-- Publish this to lightapp2/to/add
+- Publish this to prysmalight/to/add
 ```
 {
   "name": "<Device ID>",
@@ -85,7 +85,7 @@ Prysmalight-pi
 ```
 
 ## Removing a light from homekit
-- Publish this to lightapp2/to/remove
+- Publish this to prysmalight/to/remove
 ```
 {
   "name": "<Device ID>"
@@ -94,7 +94,7 @@ Prysmalight-pi
 
 ## Add homebridge to homekit
 - SSH into your raspberry pi 3
-- Navigate to the lightapp2-pi folder
+- Navigate to the prysmalight-pi folder
 - Run ```docker ps```
 - Find the correct container id for the homekit container
 - Run ```docker logs <CONTAINER-ID>```
