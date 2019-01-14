@@ -11,7 +11,7 @@ Prysmalight-pi
 
 # How to run
 - Make sure the Raspberry pi 3 is set up correctly (Section below)
-- SSH into your raspberry pi
+- SSH into your raspberry pi (Default Password is PrysmaPi)
 - Navigate to the lightapp2-pi folder
 - Run ```docker-compose up -d``` and it should work
   - Note: This may take a while the first time as it needs to pull the images from docker cloud
