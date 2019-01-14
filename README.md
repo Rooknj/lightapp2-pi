@@ -29,6 +29,10 @@ Prysmalight-pi
 - Open Hostname File
   - ```sudo nano /etc/hostname```
   - Change raspberrypi to prysma
+  
+## Set up Headless Wifi Configuration
+- TODO
+
 ## Clone the git repo or just download the file
 - Update the RPI
   - ```sudo apt-get update```
