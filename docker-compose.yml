@@ -1,13 +1,13 @@
 version: "3"
 services:
   client:
-    image: rooknj/prysmalight-client:latest-rpi
+    image: rooknj/prysmalight-client:latest
     container_name: client
     restart: always
     ports:
       - "80:80"
   testclient:
-    image: rooknj/prysmalight-client:test-rpi
+    image: rooknj/prysmalight-client:test
     container_name: testclient
     restart: always
     ports:
@@ -20,7 +20,7 @@ services:
   api:
     depends_on:
       - rabbit
-    image: rooknj/prysmalight-api:latest-rpi
+    image: rooknj/prysmalight-api:latest
     container_name: api
     restart: always
     ports:
@@ -33,7 +33,7 @@ services:
       - rabbit
       - redis
       - broker
-    image: rooknj/prysmalight-controller:latest-rpi
+    image: rooknj/prysmalight-controller:latest
     container_name: controller
     restart: always
     environment:
