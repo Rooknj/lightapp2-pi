@@ -25,10 +25,10 @@ Prysmalight-pi
 ## Change Hostname
 - Open Hosts File
   - ```sudo nano /etc/hosts
-  - Change raspberrypi to prysmalight
+  - Change raspberrypi to prysma
 - Open Hostname File
   - ```sudo nano /etc/hostname```
-  - Change raspberrypi to prysmalight
+  - Change raspberrypi to prysma
 ## Clone the git repo or just download the file
 - Update the RPI
   - ```sudo apt-get update```
