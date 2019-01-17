@@ -3,9 +3,9 @@ echo "Starting Update Script"
 git pull
 
 # Pull updated docker images
-#docker-compose pull
+docker-compose pull
 
 # Start updated docker containers
-#docker-compose up -d
+docker-compose up -d
 
 echo "End Update Script"
