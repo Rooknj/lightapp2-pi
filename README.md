@@ -21,6 +21,7 @@ Prysmalight-pi
 - Navigate to the lightapp2-pi folder
 - Run ```docker-compose pull```
   - Note: This may take a while as it needs to pull the images from docker cloud
+  
 # How to setup the Raspberry Pi 3
 ## Change Hostname
 - Open Hosts File
@@ -54,6 +55,20 @@ Prysmalight-pi
 - Install docker-compose using pip
   - ```sudo apt install -y python python-pip``` (if pip and python are not installed)
   - ```sudo pip install -U docker-compose```
+
+## Set up Node Update Server
+- Install Node
+  - ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
+  - ```sudo apt-get install -y nodejs```
+- Test to see if node is working
+  - ```node -v```
+- Install Yarn
+  - ```curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -```
+  - ```echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list```
+  - ```sudo apt-get update && sudo apt-get install yarn```
+- Test to see if yarn is working
+  - ```yarn -v```
+
 
 ## Add mDNS advertisement for MQTT server
 - Create the file /etc/avahi/services/mqtt.service
