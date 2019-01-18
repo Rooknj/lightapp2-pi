@@ -77,16 +77,42 @@ Prysmalight-pi
   - ```sudo nano /etc/init.d/update-server```
   - Paste this inside:
   ```
-  stuff
+  #!/bin/sh
+  #/etc/init.d/update-service
+  ### BEGIN INIT INFO
+  # Provides:          update-service
+  # Required-Start:    $remote_fs $syslog
+  # Required-Stop:     $remote_fs $syslog
+  # Default-Start:     2 3 4 5
+  # Default-Stop:      0 1 6
+  # Short-Description: Start daemon at boot time
+  # Description:       Enable service provided by daemon.
+  ### END INIT INFO
+  export PATH=$PATH:/home/pi/prysmalight-pi/UpdateServer
+  export NODE_PATH=$NODE_PATH:/home/pi/.config/yarn/global/node_modules
+
+  case "$1" in
+  start)
+  exec forever --sourceDir=/home/pi/prysmalight-pi/UpdateServer/src index.js
+  ;;
+  stop)
+  exec forever stop --sourceDir=/home/pi/prysmalight-pi/UpdateServer/src index.js
+  ;;
+  *)
+  echo "Usage: /etc/init.d/myService {start|stop}"
+  exit 1
+  ;;
+  esac
+  exit 0
   ```
   - Make the file executable
   - ```sudo chmod 755 /etc/init.d/update-server```
   - Test to make sure it works
   - ```sh /etc/init.d/update-server start/stop```
   - Make it bootable
-  - ```update-rc.d /etc/init.d/update-server defaults```
+  - ```sudo update-rc.d update-server defaults```
   - (To remove it from boot)
-  - ```update-rc.d -f /etc/init.d/update-server remove```
+  - ```sudo update-rc.d -f update-server remove```
   
 
 
