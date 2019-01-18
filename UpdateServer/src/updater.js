@@ -31,7 +31,7 @@ const executeCommand = async (command, cwd = null) => {
   }
 };
 
-const updateAll = () => executeCommand("sh ./update.sh", "..");
+const updateAll = () => executeCommand("sh ./update.sh", __dirname);
 
 const hasUpdates = async () => false;
 
