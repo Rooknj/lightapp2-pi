@@ -71,7 +71,7 @@ Prysmalight-pi
 - Install yarn packages
   - ```yarn install``` (in the UpdateServer directory)
 - Install Forever Globally
-  - ```sudo yarn global add forever
+  - ```sudo yarn global add forever```
 - Run on startup
   - Create the service file
   - ```sudo nano /etc/init.d/update-server```
