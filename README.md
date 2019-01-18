@@ -68,6 +68,26 @@ Prysmalight-pi
   - ```sudo apt-get update && sudo apt-get install yarn```
 - Test to see if yarn is working
   - ```yarn -v```
+- Install yarn packages
+  - ```yarn install``` (in the UpdateServer directory)
+- Install Forever Globally
+  - ```sudo yarn global add forever
+- Run on startup
+  - Create the service file
+  - ```sudo nano /etc/init.d/update-server```
+  - Paste this inside:
+  ```
+  stuff
+  ```
+  - Make the file executable
+  - ```sudo chmod 755 /etc/init.d/update-server```
+  - Test to make sure it works
+  - ```sh /etc/init.d/update-server start/stop```
+  - Make it bootable
+  - ```update-rc.d /etc/init.d/update-server defaults```
+  - (To remove it from boot)
+  - ```update-rc.d -f /etc/init.d/update-server remove```
+  
 
 
 ## Add mDNS advertisement for MQTT server
