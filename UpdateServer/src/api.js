@@ -4,7 +4,6 @@ const status = require("http-status");
 module.exports = (app, options) => {
   const updater = options.updater;
 
-  // here we get all the movies
   app.get("/updates", (req, res, next) => {
     updater
       .hasUpdates()
@@ -14,7 +13,6 @@ module.exports = (app, options) => {
       .catch(next);
   });
 
-  // here we retrieve only the premieres
   app.post("/update/all", (req, res, next) => {
     updater
       .updateAll()
@@ -24,12 +22,12 @@ module.exports = (app, options) => {
       .catch(next);
   });
 
-  // app.get("/movies/:id", (req, res, next) => {
-  //   repo
-  //     .getMovieById(req.params.id)
-  //     .then(movie => {
-  //       res.status(status.OK).json(movie);
-  //     })
-  //     .catch(next);
-  // });
+  app.post("/reboot", (req, res, next) => {
+    updater
+      .reboot()
+      .then(({ error, stdout, stderr }) => {
+        res.status(status.OK).json({ error, stdout, stderr });
+      })
+      .catch(next);
+  });
 };

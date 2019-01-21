@@ -33,6 +33,8 @@ const executeCommand = async (command, cwd = null) => {
 
 const updateAll = () => executeCommand("sh ./update.sh", __dirname);
 
+const reboot = () => executeCommand("reboot");
+
 const hasUpdates = async () => false;
 
-module.exports = { updateAll, hasUpdates };
+module.exports = { updateAll, hasUpdates, reboot };
