@@ -23,7 +23,7 @@ module.exports = (app, options) => {
   });
 
   app.post("/reboot", (req, res, next) => {
-    updater.reboot().catch(next);
     res.send("Rebooting...", status.OK);
+    updater.reboot().catch(next);
   });
 };
