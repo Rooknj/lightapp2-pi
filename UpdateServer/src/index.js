@@ -1,11 +1,9 @@
 "use strict";
-const server = require("./server");
+const service = require("./service");
 const updater = require("./updater");
 
 // Enable console log statements in this file
 /*eslint no-console:0*/
-
-const PORT = 4002;
 
 // verbose logging when we are starting the server
 console.log("--- Update Service ---");
@@ -18,14 +16,21 @@ process.on("uncaughtRejection", err => {
   console.error("Unhandled Rejection", err);
 });
 
-server
-  .start({
-    port: PORT,
-    updater
-  })
-  .then(app => {
-    console.log(`Server started succesfully, running on port: ${PORT}.`);
-    app.on("close", () => {
-      console.log("App Closed");
-    });
-  });
+// Start the service
+console.log("Starting Service");
+const rabbitSettings = {
+  protocol: "amqp",
+  hostname: "localhost",
+  port: 5672,
+  username: "guest",
+  password: "guest",
+  locale: "en_US",
+  frameMax: 0,
+  heartbeat: 0,
+  vhost: "/"
+};
+
+const amqp = require("amqplib");
+service.start({ amqp, amqpSettings: rabbitSettings, updater }).then(() => {
+  console.log("Service Started");
+});
