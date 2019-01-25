@@ -79,14 +79,14 @@ const start = async ({ amqp, amqpSettings, updater }) => {
   // updateHub
   createConsumer(UPDATE_HUB_Q, async () => {
     // update the hub
-    const { error, stdout, stderr } = await updater.updateAll();
+    const updateResponse = await updater.updateAll();
 
     // Generate a response message
     let response = { error: null, data: null };
-    if (error) {
-      response.error = error.message;
+    if (updateResponse instanceof Error) {
+      response.error = updateResponse.message;
     } else {
-      response.data = stdout;
+      response.data = updateResponse;
     }
     return response;
   });

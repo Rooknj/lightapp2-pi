@@ -31,7 +31,18 @@ const executeCommand = async (command, cwd = null) => {
   }
 };
 
-const updateAll = () => executeCommand("sh ./update.sh", __dirname);
+const updateAll = async () => {
+  try {
+    let error = null;
+    ({ error } = await executeCommand("sh ./update.sh", __dirname));
+    if (error) return new Error(error);
+    ({ error } = await executeCommand("yarn install", `${__dirname}/..`));
+    if (error) return new Error(error);
+    return "Successfully Updated";
+  } catch (err) {
+    return err;
+  }
+};
 
 const reboot = () => executeCommand("reboot");
 
