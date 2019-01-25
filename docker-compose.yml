@@ -16,6 +16,8 @@ services:
     image: arm32v7/rabbitmq:3
     hostname: "myrabbit"
     container_name: rabbit
+    ports:
+      - "5672:5672"
     restart: always
   api:
     depends_on:
