@@ -1,17 +1,17 @@
 version: "3"
 services:
   client:
-    image: rooknj/prysmalight-client:latest
+    image: rooknj/prysmalight-web:latest
     container_name: client
     restart: always
     ports:
       - "80:80"
   testclient:
-    image: rooknj/prysmalight-client:test
+    image: rooknj/prysmalight-web:test
     container_name: testclient
     restart: always
     ports:
-      - "8080:80"
+      - "8081:80"
   rabbit:
     image: arm32v7/rabbitmq:3
     hostname: "myrabbit"
