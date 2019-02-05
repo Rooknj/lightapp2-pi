@@ -132,6 +132,10 @@ Prysmalight-pi
 ```
 - Reboot to take effect
 # Working with homebridge
+## Homebridge User Interface
+- Located at prysma.local:8080
+- default user and pass: admin
+
 ## We are using homebridge-mqtt to interface with homekit
 - Follow the API here: https://www.npmjs.com/package/homebridge-mqtt
 - Service and characteristic names defined here : https://github.com/KhaosT/HAP-NodeJS/blob/master/lib/gen/HomeKitTypes.js
