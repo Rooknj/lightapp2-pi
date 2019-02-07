@@ -41,15 +41,15 @@ services:
     volumes:
       - ./redisData:/data
   broker:
-    image: rooknj/lightapp2:broker-rpi-latest
+    image: pascaldevink/rpi-mosquitto
     container_name: broker
     restart: always
     ports:
       - "1883:1883"
     volumes:
       - ./mqtt/config:/mqtt/config
-      - /mqtt/data
-      - /mqtt/log
+      - ./mqtt/data:/mqtt/data
+      - ./mqtt/log:/mqtt/log
   homebridge:
     image: oznu/homebridge:raspberry-pi
     container_name: homebridge
