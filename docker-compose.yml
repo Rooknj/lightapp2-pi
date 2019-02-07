@@ -12,13 +12,6 @@ services:
     restart: always
     ports:
       - "8081:80"
-  rabbit:
-    image: arm32v7/rabbitmq:3
-    hostname: "myrabbit"
-    container_name: rabbit
-    ports:
-      - "5672:5672"
-    restart: always
   prysmalight:
     depends_on:
       - rabbit
@@ -34,6 +27,13 @@ services:
       - MQTT_HOST=broker
       - RABBIT_HOST=rabbit
       - REDIS_HOST=redis      
+  rabbit:
+    image: arm32v7/rabbitmq:3
+    hostname: "myrabbit"
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+    restart: always
   redis:
     image: arm32v7/redis:latest
     container_name: redis
