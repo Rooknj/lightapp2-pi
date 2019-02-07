@@ -1,6 +1,6 @@
 {
     "bridge": {
-        "name": "PrysmaLight",
+        "name": "prysmalight",
         "username": "CC:22:3D:E3:CE:31",
         "port": 51826,
         "pin": "420-26-123"
