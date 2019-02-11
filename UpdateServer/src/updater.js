@@ -34,17 +34,23 @@ const executeCommand = async (command, cwd = null) => {
 const updateAll = async () => {
   try {
     let error = null;
-    ({ error } = await executeCommand("sh ./update.sh", __dirname));
+    ({ error } = await executeCommand("git pull", __dirname));
     if (error) return new Error(error);
     ({ error } = await executeCommand("yarn install", `${__dirname}/..`));
     if (error) return new Error(error);
-    return "Successfully Updated";
+    ({ error } = await executeCommand("docker-compose pull", __dirname));
+    if (error) return new Error(error);
+    ({ error } = await executeCommand("docker-compose up -d", __dirname));
+    if (error) return new Error(error);
+    return null;
   } catch (err) {
     return err;
   }
 };
 
-const reboot = () => executeCommand("reboot");
+const reboot = () => {
+  executeCommand("reboot");
+};
 
 const hasUpdates = async () => false;
 
