@@ -1,6 +1,9 @@
 "use strict";
-const service = require("./service");
+const { createService } = require("./service");
 const updater = require("./updater");
+const mediatorFactory = require("./mediator/mediator");
+const redis = require("redis");
+const events = require("events");
 
 // Enable console log statements in this file
 /*eslint no-console:0*/
@@ -16,21 +19,11 @@ process.on("uncaughtRejection", err => {
   console.error("Unhandled Rejection", err);
 });
 
-// Start the service
-console.log("Starting Service");
-const rabbitSettings = {
-  protocol: "amqp",
-  hostname: "localhost",
-  port: 5672,
-  username: "guest",
-  password: "guest",
-  locale: "en_US",
-  frameMax: 0,
-  heartbeat: 0,
-  vhost: "/"
-};
+const eventEmitter = new events.EventEmitter();
 
-const amqp = require("amqplib");
-service.start({ amqp, amqpSettings: rabbitSettings, updater }).then(() => {
-  console.log("Service Started");
-});
+// Create a redis client
+const redisClient = redis.createClient(6379, "localhost");
+
+const mediator = mediatorFactory(eventEmitter, redisClient);
+
+createService(mediator, updater).then(() => console.log("Service Started"));
