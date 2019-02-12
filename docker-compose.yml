@@ -1,5 +1,11 @@
 version: "3"
 services:
+  proxy:
+    image: arm32v7/nginx:stable
+    container_name: proxy
+    restart: always
+    ports:
+      - "3000:80"
   client:
     image: rooknj/prysmalight-web:latest
     container_name: client
