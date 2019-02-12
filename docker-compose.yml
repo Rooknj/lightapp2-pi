@@ -8,27 +8,26 @@ services:
       - "80:80"
     volumes:
       - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
-  client:
+  web:
+    depends_on:
+      - proxy
     image: rooknj/prysmalight-web:latest
-    container_name: client
+    container_name: web
     restart: always
-    ports:
-      - "3000:80"
-  testclient:
+  testWeb:
+    depends_on:
+      - proxy
     image: rooknj/prysmalight-web:test
-    container_name: testclient
+    container_name: testWeb
     restart: always
-    ports:
-      - "8081:80"
   prysmalight:
     depends_on:
       - redis
       - broker
+      - proxy
     image: rooknj/prysmalight:latest
     container_name: prysmalight
     restart: always
-    ports:
-      - "4001:4001"
     environment:
       - DEBUG="main,config,service,db,pubsub,repo,server"
       - MQTT_HOST=broker
