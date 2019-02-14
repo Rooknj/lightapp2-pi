@@ -23,13 +23,15 @@ Prysmalight-pi
   - Note: This may take a while as it needs to pull the images from docker cloud
   
 # How to setup the Raspberry Pi 3
-## Change Hostname
+## Change Hostname/Password
 - Open Hosts File
   - ```sudo nano /etc/hosts```
   - Change raspberrypi to prysma
 - Open Hostname File
   - ```sudo nano /etc/hostname```
   - Change raspberrypi to prysma
+- Change Password
+  - ```passwd```
   
 ## Set up Headless Wifi Configuration
 - TODO
@@ -41,7 +43,7 @@ Prysmalight-pi
 - Install git if you havent already
   - ```sudo apt-get install git```
 - Clone the repo
-  - ```git clone https://github.com/Rooknj/lightapp2-pi.git```
+  - ```git clone https://github.com/Rooknj/prysmalight-pi.git```
 
 ## Install and setup Docker and Docker-compose
 - Install docker using this script
