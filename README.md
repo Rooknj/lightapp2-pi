@@ -57,10 +57,12 @@ Prysmalight-pi
 - Install docker-compose using pip
   - ```sudo apt install -y python python-pip``` (if pip and python are not installed)
   - ```sudo pip install -U docker-compose```
+- Run Docker Containers
+  - ```docker-compose up -d``` in prysmalight-pi directory
 
 ## Set up Node Update Server
 - Install Node
-  - ```curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -```
+  - ```curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -```
   - ```sudo apt-get install -y nodejs```
 - Test to see if node is working
   - ```node -v```
@@ -90,6 +92,7 @@ Prysmalight-pi
   # Short-Description: Start daemon at boot time
   # Description:       Enable service provided by daemon.
   ### END INIT INFO
+  sleep 8
   export PATH=$PATH:/home/pi/prysmalight-pi/UpdateServer
   export NODE_PATH=$NODE_PATH:/home/pi/.config/yarn/global/node_modules
 
