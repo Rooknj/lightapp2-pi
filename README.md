@@ -79,7 +79,7 @@ Prysmalight-pi
 - Run on startup
   - Create the service file
   - ```sudo nano /etc/init.d/update-server```
-  - Paste this inside:
+  - Paste this inside (Ensure there are no leading spaces on any line):
   ```
   #!/bin/sh
   #/etc/init.d/update-service
@@ -115,9 +115,9 @@ Prysmalight-pi
   - Test to make sure it works
   - ```sh /etc/init.d/update-server start/stop```
   - Make it bootable
-  - ```sudo update-rc.d /etc/init.d/update-server defaults```
+  - ```sudo update-rc.d update-server defaults```
   - (To remove it from boot)
-  - ```sudo update-rc.d -f /etc/init.d/update-server remove```
+  - ```sudo update-rc.d -f update-server remove```
   
 
 
