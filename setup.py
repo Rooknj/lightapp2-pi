@@ -1,5 +1,6 @@
 import os
 import sys
+import setup_funcs
 
 if os.getuid():
   sys.exit('You need root access to install!')
@@ -12,14 +13,14 @@ print("##### Prysmalight Intial Setup  #####")
 print("#####################################")
 print()
 print()
-hostname = input("Would you like to change the hostname? [default: prysma]: ")
+hostname = input("Would you like to change the hostname? [default: prysma2]: ")
 os.system('clear')
 print()
 print()
 install_ans = input("Are you ready to commit changes to the system? [y/N]: ")
 
 if(install_ans.lower() == 'y'):
-	print("INstaalling")
+	setup_funcs.setup_hostname(hostname)
 else:
 	print()
 	print()
