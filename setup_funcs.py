@@ -24,6 +24,7 @@ def setup_password(password):
       print('Error changing password for ' + login)
 
 def install_docker():
+  # TODO: Check if docker is already installed and dont run this.
   os.system("curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh")
   os.system("groupadd docker")
   os.system("gpasswd -a $USER docker")
