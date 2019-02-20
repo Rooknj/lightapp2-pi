@@ -29,9 +29,4 @@ def install_docker():
   os.system("gpasswd -a $USER docker")
   os.system("newgrp docker")
   print("Hello")
-  try:
-    pip._internal.main(["install", "docker-compose"])
-  except SystemExit as e:
-    print(e)
-    pass
   print("Hello")
