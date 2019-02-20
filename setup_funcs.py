@@ -29,4 +29,5 @@ def install_docker():
   os.system("gpasswd -a $USER docker")
   os.system("newgrp docker")
   print("Hello")
+  os.system("pip3 install -U docker-compose")
   print("Hello")
