@@ -1,4 +1,5 @@
 import os,subprocess,crypt,random,sys
+import pip
 
 def setup_hostname(hostname):
   if hostname == "":
@@ -27,4 +28,4 @@ def install_docker():
   os.system("groupadd docker")
   os.system("gpasswd -a $USER docker")
   os.system("newgrp docker")
-  os.system("pip3 install -U docker-compose")
+  pip.main(['install', "docker-compose"])
