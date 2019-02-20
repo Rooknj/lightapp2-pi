@@ -28,7 +28,9 @@ def install_docker():
   os.system("groupadd docker")
   os.system("gpasswd -a $USER docker")
   os.system("newgrp docker")
+  print("Hello")
   r = subprocess.call([sys.executable, "-m", "pip", "install", "docker-compose"])
-  
+
   if r != 0:
-      print('Error installing docker-compose')
+    print('Error installing docker-compose')
+  print("Hello")
