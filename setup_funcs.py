@@ -21,3 +21,10 @@ def setup_password(password):
 
   if r != 0:
       print('Error changing password for ' + login)
+
+def install_docker():
+  os.system("curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh")
+  os.system("groupadd docker")
+  os.system("gpasswd -a $USER docker")
+  os.system("newgrp docker")
+  os.system("pip3 install -U docker-compose")

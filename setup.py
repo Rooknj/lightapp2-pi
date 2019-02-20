@@ -24,6 +24,7 @@ install_ans = input("Are you ready to commit changes to the system? [y/N]: ")
 if(install_ans.lower() == 'y'):
   setup_funcs.setup_hostname(hostname)
   setup_funcs.setup_password(password)
+  setup_funcs.install_docker()
 else:
 	print()
 	print()
