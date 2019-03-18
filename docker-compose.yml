@@ -33,13 +33,13 @@ services:
       - MQTT_HOST=mqtt
       - REDIS_HOST=redis      
   redis:
-    image: arm32v7/redis:latest
+    image: rooknj/prysmalight-redis:1.0.0
     container_name: redis
     restart: always
     ports:
       - "6379:6379"
     volumes:
-      - ./redisData:/data
+      - /data
   mqtt:
     image: rooknj/prysmalight-mqtt:1.0.0
     container_name: mqtt
@@ -47,9 +47,9 @@ services:
     ports:
       - "1883:1883"
     volumes:
-      - ./mqtt/config
-      - ./mqtt/data
-      - ./mqtt/log
+      - /mqtt/config
+      - /mqtt/data
+      - /mqtt/log
   homebridge:
     image: rooknj/prysmalight-homekit:1.0.0
     container_name: homekit
