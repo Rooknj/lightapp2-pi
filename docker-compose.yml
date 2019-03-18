@@ -32,7 +32,6 @@ services:
       - REDIS_HOST=redis      
   redis:
     image: rooknj/prysmalight-redis:1.0.0
-    #image: arm32v7/redis
     container_name: redis
     restart: always
     ports:
