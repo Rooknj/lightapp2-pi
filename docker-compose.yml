@@ -21,7 +21,7 @@ services:
   prysmalight:
     depends_on:
       - redis
-      - broker
+      - mqtt
       - proxy
     image: rooknj/prysmalight:latest
     container_name: prysmalight
