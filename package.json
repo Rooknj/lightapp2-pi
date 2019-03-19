@@ -24,5 +24,7 @@
     "start": "node scripts/start"
   },
   "main": "src/index.js",
-  "dependencies": {}
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
 }

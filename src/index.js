@@ -1,3 +1,6 @@
-"use strict";
+#!/usr/bin/env node
 
-console.log("Hello World");
+const program = require("commander");
+const version = "0.0.1";
+
+program.version(version).parse(process.argv);
