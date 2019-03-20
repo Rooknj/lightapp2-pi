@@ -1,4 +1,10 @@
 version: "3"
+
+volumes:
+  redisData:
+  mqttLogs:
+  homebridgeConfig:
+
 services:
   proxy:
     image: rooknj/prysmalight-proxy:1.0.0
@@ -37,7 +43,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - /data
+      - redisData:/data
   mqtt:
     image: rooknj/prysmalight-mqtt:1.0.0
     container_name: mqtt
@@ -46,14 +52,14 @@ services:
       - "1883:1883"
     volumes:
       - /mqtt/data
-      - /mqtt/log
+      - mqttLogs:/mqtt/log
   homebridge:
     image: rooknj/prysmalight-homekit:1.0.0
     container_name: homekit
     restart: always
     network_mode: host
     volumes:
-      - /homebridge
+      - homebridgeConfig:/homebridge
     environment:
       - PGID=1000
       - PUID=1000
