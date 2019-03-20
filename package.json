@@ -1,7 +1,7 @@
 {
   "name": "prysmalight",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.2",
+  "private": false,
   "devDependencies": {
     "cross-spawn": "^6.0.5",
     "eslint": "^5.15.1",
@@ -26,5 +26,13 @@
   "main": "src/index.js",
   "dependencies": {
     "commander": "^2.19.0"
-  }
+  },
+  "bin": {
+    "prysmalight": "src/index.js"
+  },
+  "preferGlobal": true,
+  "files": [
+    "src",
+    "compose"
+  ]
 }
