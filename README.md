@@ -60,66 +60,39 @@ Prysmalight-pi
 - Run Docker Containers
   - ```docker-compose up -d``` in prysmalight-pi directory
 
-## Set up Node Update Server
+## Set up Prysmalight Service (TODO: Implement Update Service/Make start a daemon (with forever? This might not be needed with Restart=always))
+- sudo nano /etc/systemd/system/prysmalight.service
+  ```
+  [Unit]
+  Description=Prysmalight start script
+  Requires=docker.service
+  After=docker.service
+
+  [Service]
+  Restart=always
+  ExecStart=/usr/bin/prysmalight start
+  ExecStop=/usr/bin/prysmalight stop
+
+  [Install]
+  WantedBy=local.target
+  ```
+- enable service
+  - ```sudo systemctl start prysmalight.service```
+  - ```sudo systemctl enable prysmalight.service```
+- disable service
+  - ```sudo systemctl stop prysmalight.service```
+  - ```sudo systemctl disable prysmalight.service```
+
+## Install Prysmalight
 - Install Node
   - ```curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -```
   - ```sudo apt-get install -y nodejs```
 - Test to see if node is working
   - ```node -v```
-- Install Yarn
-  - ```curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -```
-  - ```echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list```
-  - ```sudo apt-get update && sudo apt-get install yarn```
-- Test to see if yarn is working
-  - ```yarn -v```
-- Install yarn packages
-  - ```yarn install``` (in the UpdateServer directory)
-- Install Forever Globally
-  - ```sudo yarn global add forever```
-- Run on startup
-  - Create the service file
-  - ```sudo nano /etc/init.d/update-server```
-  - Paste this inside (Ensure there are no leading spaces on any line):
-  ```
-  #!/bin/sh
-  #/etc/init.d/update-service
-  ### BEGIN INIT INFO
-  # Provides:          update-service
-  # Required-Start:    $remote_fs $syslog
-  # Required-Stop:     $remote_fs $syslog
-  # Default-Start:     2 3 4 5
-  # Default-Stop:      0 1 6
-  # Short-Description: Start daemon at boot time
-  # Description:       Enable service provided by daemon.
-  ### END INIT INFO
-  sleep 8
-  export PATH=$PATH:/home/pi/prysmalight-pi/UpdateServer
-  export NODE_PATH=$NODE_PATH:/home/pi/.config/yarn/global/node_modules
-
-  case "$1" in
-  start)
-  exec forever --sourceDir=/home/pi/prysmalight-pi/UpdateServer/src index.js
-  ;;
-  stop)
-  exec forever stop --sourceDir=/home/pi/prysmalight-pi/UpdateServer/src index.js
-  ;;
-  *)
-  echo "Usage: /etc/init.d/myService {start|stop}"
-  exit 1
-  ;;
-  esac
-  exit 0
-  ```
-  - Make the file executable
-  - ```sudo chmod 755 /etc/init.d/update-server```
-  - Test to make sure it works
-  - ```sh /etc/init.d/update-server start/stop```
-  - Make it bootable
-  - ```sudo update-rc.d update-server defaults```
-  - (To remove it from boot)
-  - ```sudo update-rc.d -f update-server remove```
-  
-
+- Install Prysmalight Globally
+  - ``sudo npm install -g prysmalight@latest
+- Run Prysmalight
+  - ```sudo prysmalight start
 
 ## Add mDNS advertisement for MQTT server
 - Create the file /etc/avahi/services/mqtt.service
