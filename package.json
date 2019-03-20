@@ -1,0 +1,38 @@
+{
+  "name": "prysmalight",
+  "version": "1.0.3",
+  "private": false,
+  "devDependencies": {
+    "cross-spawn": "^6.0.5",
+    "eslint": "^5.15.1",
+    "husky": "^1.3.1",
+    "jest": "^24.3.1",
+    "lint-staged": "^8.1.5",
+    "nodemon": "^1.18.10",
+    "pkg": "^4.3.7",
+    "prettier": "^1.16.4",
+    "spawn-args": "^0.2.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "node scripts/start"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "commander": "^2.19.0"
+  },
+  "bin": {
+    "prysmalight": "src/index.js"
+  },
+  "preferGlobal": true,
+  "files": [
+    "src",
+    "compose"
+  ]
+}
