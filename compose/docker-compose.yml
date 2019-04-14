@@ -15,21 +15,15 @@ services:
   web:
     depends_on:
       - proxy
-    image: rooknj/prysmalight-web:latest
+    image: rooknj/prysmalight-web:1.0.0
     container_name: web
-    restart: always
-  testWeb:
-    depends_on:
-      - proxy
-    image: rooknj/prysmalight-web:test
-    container_name: testWeb
     restart: always
   prysmalight:
     depends_on:
       - redis
       - mqtt
       - proxy
-    image: rooknj/prysmalight:latest
+    image: rooknj/prysmalight:1.2.0
     container_name: prysmalight
     restart: always
     environment:
