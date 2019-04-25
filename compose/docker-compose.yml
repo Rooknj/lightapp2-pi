@@ -15,7 +15,7 @@ services:
   web:
     depends_on:
       - proxy
-    image: rooknj/prysmalight-web:1.0.0
+    image: rooknj/prysmalight-web:1.1.0
     container_name: web
     restart: always
   prysmalight:
